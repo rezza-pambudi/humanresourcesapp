@@ -4,12 +4,16 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\EmployeeController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// Employee Routes
+Route::resource('/employees', EmployeeController::class);
 
 // Task Routes
 Route::resource('/tasks', TaskController::class);
