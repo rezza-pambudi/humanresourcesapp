@@ -17,9 +17,19 @@ class Employee extends Model
         'address',
         'birth_date',
         'hire_date',
-        'department_id',
+        'departement_id',
         'role_id',
         'status',
         'salary',
     ];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'departement_id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
 }
