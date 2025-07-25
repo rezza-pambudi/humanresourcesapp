@@ -70,7 +70,7 @@
                         <option value="pending">Pending</option>
                         <option value="on progress">On Progress</option>
                     </select>
-                    @error('due_date')
+                    @error('status')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

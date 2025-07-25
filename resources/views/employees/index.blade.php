@@ -49,15 +49,11 @@
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
-                            <th>Fullname</th>
+                            <th>Full Name</th>
                             <th>Email</th>
-                            <th>Phone Number</th>
-                            <th>Adreess</th>
-                            <th>Birth Date</th>
-                            <th>Hire Date</th>
                             <th>Department</th>
                             <th>Role</th>
-                            <th>Status</th>
+                            <!-- <th>Status</th> -->
                             <th>Salary</th>
                             <th>Option</th>
                         </tr>
@@ -67,24 +63,26 @@
                         <tr>
                             <td>{{ $employee->fullname }}</td>
                             <td>{{ $employee->email }}</td>
-                            <td>{{ $employee->phone_number }}</td>
-                            <td>{{ $employee->address }}</td>
-                            <td>{{ $employee->birth_date }}</td>
-                            <td>{{ $employee->hire_date }}</td>
                             <td>{{ $employee->department->name }}</td>
                             <td>{{ $employee->role->title }}</td>
-                            <td>
+                            <!-- <td>
                                 @if($employee->status == 'active')
                                     <span class="text-success">{{ $employee->status }}</span>
                                 @else
                                     <span class="text-danger">{{ $employee->status }}</span>
                                 @endif
                                 
-                            </td>
-                            <td>{{ $employee->salary }}</td>
+                            </td> -->
+                            <td>{{ number_format($employee->salary) }}</td>
                             
                             <td>
-                                //tombol disini
+                                <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-dark btn-sm">View</a>
+                                <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

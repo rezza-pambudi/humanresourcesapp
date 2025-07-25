@@ -14,6 +14,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 // Employee Routes
 Route::resource('/employees', EmployeeController::class);
+Route::get('employees/show/{id}', [EmployeeController::class, 'show'])->name('employees.show');
 
 // Task Routes
 Route::resource('/tasks', TaskController::class);
